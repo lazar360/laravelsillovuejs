@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+ 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercices vue.js</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+      <h2><u>1/ THE CLOCK</u></h2>
+      <div id="tuto" class="text-center">
+        <h2>Vous êtes là depuis :</h2>
+        <h2>
+          <span class="label label-primary">{{ heures }}</span> heures
+          <span class="label label-primary">{{ minutes }}</span> minutes
+          <span class="label label-primary">{{ secondes }}</span> secondes
+        </h2>
+      </div>
+    </div>
+ <br>
+    <div class="container">
+      <h2><u>2/ LE CLICK DE LA MUERTE</u></h2>
+      <br>
+      <div id="tuto2">
+        <h2 class="text-center"> 
+          <!--On peut remplacer @click par v-on:click="action"-->
+          <button class="button btn-danger" @click="action">Ne clique pas ici</button>
+        </h2>
+        <br>
+      </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+    <script>
+      //1/THE CLOCK
+      //-----------
+      var vm = new Vue({
+        el: '#tuto',
+        data: {
+          heures: 0,
+          minutes: 0,
+          secondes: 0
+        }
+      });
+ 
+      var totalSecondes = 0;
+       
+      setInterval(function() {
+        var minutes = Math.floor(++totalSecondes / 60);
+        vm.secondes = totalSecondes - minutes * 60;
+        vm.heures = Math.floor(minutes / 60);
+        vm.minutes = minutes - vm.heures * 60;
+      }, 1000);
+      
+      //2/ LE CLICK DE LA MUERTE
+      //------------------------
+      new Vue({
+      el: '#tuto2',
+      methods: {
+        action: function () {
+          alert('You die !');
+      }  
+    }
+    });
+   
+    </script>
+ 
+  </body>
+ 
+</html>
