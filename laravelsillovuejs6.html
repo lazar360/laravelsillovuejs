@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+ 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercices vue.js</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+ 
+  <body>
+ 
+    <table class="table table-bordered">
+      <caption>Personnes</caption>
+      <thead>
+        <tr>
+         <th>Nom</th>
+         <th>Prénom</th>
+        </tr>
+      </thead>
+      <tbody id="tuto">
+        <tr v-for="personne in personnes">
+          <td>{{ personne.nom }}</td>
+          <td>{{ personne.prenom }}</td>   
+        </tr>  
+      </tbody>       
+    </table>
+
+
+    <script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+    <script>
+       
+       var vm = new Vue({
+  el: '#tuto',
+  data: {
+    personnes: [
+      {nom: "Durand", prenom: "Jacques"},
+      {nom: "Dupont", prenom: "Albert"},
+      {nom: "Martin", prenom: "Denis"},
+    ]
+  }
+});
+ 
+setTimeout(function(){vm.personnes.push({nom: "Claret", prenom: "Marcel"});}, 2000);
+setTimeout(function(){vm.personnes.pop();}, 4000);
+setTimeout(function(){vm.personnes.unshift({nom: "Claret", prenom: "Marcel"});}, 6000);
+setTimeout(function(){vm.personnes.shift();}, 8000);
+setTimeout(function(){vm.personnes.splice(1, 1, {nom: "Claret", prenom: "Marcel"});}, 10000);
+setTimeout(function(){vm.personnes.sort(function (a, b) { return (a.nom > b.nom) });}, 12000);
+setTimeout(function(){vm.personnes.reverse();}, 14000);
+  
+    </script>
+ 
+  </body>
+ 
+</html>

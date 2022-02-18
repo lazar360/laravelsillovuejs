@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+ 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercices vue.js</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+    <h2 class="text-center">ALORS ON BOUCLE AVEC L'INDEX!</h2>
+      
+    <ul id="tuto">
+      <li v-for="(value, index) in fruits" @click="getFruit(index)">
+            {{ index }} => {{ value }}
+        </li>
+    </ul>
+
+      
+    </div>
+
+
+    <script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+    <script>
+       
+new Vue({
+  el: '#tuto',
+  data: {
+    fruits: [
+      'pomme',
+      'cerise',
+      'abricot'
+    ]
+  },
+  methods: {
+    getFruit: function(index) {
+      alert('Je suis ' + this.fruits[index]);
+    }
+  }
+});
+    </script>
+ 
+  </body>
+ 
+</html>
